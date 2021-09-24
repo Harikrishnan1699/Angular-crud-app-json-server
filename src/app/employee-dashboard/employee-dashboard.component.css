@@ -1,0 +1,43 @@
+.addbutton{
+    position: absolute;
+    margin-top: -4%;
+    right: 42px;
+}
+.spacer{
+    position: absolute;
+    right: 40%;
+    
+}
+
+.navbar{
+    flex:1 1 auto;
+    
+}
+
+.addbutton{
+    position: absolute;
+    margin-top: -41px;
+    right: 6%;
+}
+
+
+body, html {
+    height: 100%;
+    
+    
+  }
+  .bg {
+    /* The image used */
+    background-image: url("../../assets/black.jpg");
+  
+    /* Half height */
+    height: 100%;
+    
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+   
+  }

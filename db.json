@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "firstname": "hari",
+      "lastname": "pv",
+      "email": "gg@gmail.com",
+      "mobile": "1234567890",
+      "salary": "2342334"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

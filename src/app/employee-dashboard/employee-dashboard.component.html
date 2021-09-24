@@ -1,0 +1,139 @@
+
+<div class="bg">
+
+<p class="py-5 text-center"></p>
+<div class="container">
+
+
+
+<div style="height: 39px;">
+    <button mat-fab type="button" (click)="clickAddEmployee()" data-bs-toggle="modal" class="addbutton" data-bs-target="#exampleModal"
+        color="primary">
+        <mat-icon>add_circle_outline</mat-icon>
+    </button>
+
+
+
+</div>
+
+
+<div class="table-header-fixed-div ht-305">
+    <table class="table fixed_headers preClass">
+        <thead style="color:rgb(255, 255, 255);">
+            <tr>
+                <th scope="col" style="width: 80px;">EM-ID</th>
+                <th scope="col" style="width: 200px;">FIRST NAME</th>
+                <th scope="col" style="width: 150px;">LAST NAME</th>
+                <th scope="col" style="width: 200px;">EMAIL ID</th>
+                <th scope="col" style="width: 250px;"> MOBILE NO</th>
+                <th scope="col" style="width: 250px;">SALARY</th>
+                <th scope="col" style="width: 150px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of employeeData">
+                <td style="color: white;"><b>{{item.id}}</b></td>
+                <td style="color: white;"><b>{{item.firstname}}</b></td>
+                <td style="color: white;"><b>{{item.lastname}}</b></td>
+                <td style="color: white;"><b>{{item.email}}</b></td>
+                <td style="color: white;"><b>{{item.mobile}}</b></td>
+                <td style="color: white;"><b>Rs: {{item.salary}}</b></td>
+
+
+                <td>
+
+                    <button mat-mini-fab color="accent" (click)="onEdit(item)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        <mat-icon>edit</mat-icon>
+                    </button>&nbsp;&nbsp;
+
+                    <button mat-mini-fab color="warn" (click)="delEmployee(item)">
+                        <mat-icon>delete_outline</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"  id="exampleModalLabel">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Employee Details</b></h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+
+
+                        <div class="example-container">
+                            <mat-form-field appearance="fill">
+                                <mat-label>First Name</mat-label>
+                                <input matInput formControlName="firstname" class="form-control" required>
+                                <mat-error *ngIf="formValue.get('firstname').hasError('minlength')">minimum
+                                    length 3</mat-error>
+
+                            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput formControlName="lastname" class="form-control" required>
+                            </mat-form-field>
+                        </div><br><br>
+
+
+
+                        <div class="example-container">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input matInput formControlName="email" class="form-control">
+
+
+                                <mat-error *ngIf="
+                                            formValue.get('email').hasError('email')
+                                            &&!formValue.get('email').hasError('required')">
+                                    Please enter a valid email address
+                                </mat-error>
+
+                            </mat-form-field>&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <mat-form-field appearance="fill">
+                                <mat-label>Mobile No</mat-label>
+                                <input matInput formControlName="mobile" class="form-control">
+                            </mat-form-field>
+                        </div><br><br>
+                        <div class="example-container">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Salary</mat-label>
+                                <input matInput formControlName="salary" class="form-control">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" mat-raised-button color="accent" data-bs-dismiss="modal"
+                    id="cancel">Close</button>&nbsp;&nbsp;
+                <button type="button" *ngIf="showAdd" (click)=" postEmployeeDetails() " mat-raised-button color="primary">Add</button>
+                <button type="button" *ngIf="showUpdate" (click)=" updateEmployeeDetails() " mat-raised-button
+                    color="primary">Update</button>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
